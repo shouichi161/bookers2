@@ -3,7 +3,7 @@ const { environment } = require('@rails/webpacker')
 module.exports = environment
 
 const webpack=require('webpack')
-environment.pligins.prepend(
+environment.plugins.prepend(
   'Provide',
   new webpack.ProvidePlugin({
     $:'jquery/src/iquery',
@@ -11,3 +11,4 @@ environment.pligins.prepend(
     Popper:'popper.js'
   })
   )
+
