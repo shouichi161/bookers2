@@ -1,2 +1,27 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%=render"book",book:@book %>
+    <div class="col-8">
+      <div class="m-3">
+        <h2>Book detail</h2>
+        <table class="border-top">
+          <tr>
+           <Th class="p-3"><%=link_to user_path(@book.user.id) do %>
+                 <%=image_tag @book.user.get_profile_image(80,80) %><br><%= @book.user.name %>
+               <% end %>
+           </Th>
+           <td class="align-top p-3"><%=link_to book_path(@book.id) do %>
+               <%=@book.title %>
+               <% end %>
+           </td>
+           <td class="align-top p-3"><%=@book.body %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
