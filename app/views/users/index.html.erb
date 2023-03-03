@@ -4,19 +4,23 @@
     <div class="col-8">
       <div class="p-3">
         <h2>Users</h2>
-        <table class="border-top">
-          <tr class="border-bottom">
-            <th class="p-3">image</th>
-            <th class="p-3">name</th>
-            <th></th>
-          </tr>
-          <% @users.each do |user| %>
-          <tr class="border-top">
-            <td class="p-3"><%=image_tag user.get_profile_image(80,80) %></td>
-            <td class="align-top p-3"><%=user.name %></td>
-            <td class="align-top p-3"><%=link_to "show",user_path(user.id) %></td>
-          </tr>
-          <% end %>
+        <table class="border-top table">
+          <thead>
+            <tr class="border-bottom">
+              <th>image</th>
+              <th>name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+            <tr class="border-top">
+              <td><%=image_tag user.get_profile_image(80,80) %></td>
+              <td><%=user.name %></td>
+              <td><%=link_to "show",user_path(user.id) %></td>
+            </tr>
+            <% end %>
+          </tbody>
         </table>
       </div>
     </div>

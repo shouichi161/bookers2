@@ -4,18 +4,29 @@
     <div class="col-8">
       <div class="m-3">
         <h2>Book detail</h2>
-        <table class="border-top">
-          <tr>
-           <Th class="p-3"><%=link_to user_path(@book.user.id) do %>
-                 <%=image_tag @book.user.get_profile_image(80,80) %><br><%= @book.user.name %>
-               <% end %>
-           </Th>
-           <td class="align-top p-3"><%=link_to book_path(@book.id) do %>
-               <%=@book.title %>
-               <% end %>
-           </td>
-           <td class="align-top p-3"><%=@book.body %></td>
-          </tr>
+        <table class="border-top table">
+          <tbody>
+            <tr>
+              <Th><%=link_to user_path(@bookf.user.id) do %>
+                  <%=image_tag @bookf.user.get_profile_image(80,80) %><br><%= @bookf.user.name %>
+                  <% end %>
+              </Th>
+              <td><%=link_to book_path(@bookf.id) do %>
+                  <%=@bookf.title %>
+                  <% end %>
+              </td>
+              <td><%=@bookf.body %></td>
+              <% if @bookf.user==current_user %>
+                <td><%=link_to edit_book_path(@bookf.id),class:"btn btn-success" do %>
+                      Edit
+                    <% end %>
+                </td>
+                <td><%= link_to book_path(@bookf.id),method: :delete,"data-confirm"=>"本当に削除しますか？",class:"btn btn-danger" do %>
+                      Destroy
+                    <% end %>
+              <% end %>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

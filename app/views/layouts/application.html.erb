@@ -21,13 +21,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
+
+              <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to'/',class:"nav-link text-light" do %>
+                <%= link_to user_path(current_user.id),class:"nav-link text-light" do %>
                   <i class="fas fa-home"></i>Home
                 <% end %>
               </li>
-              
-              <% if user_signed_in? %>
+
               <li class="nav-item">
                 <%= link_to users_path,class:"nav-link text-light" do %>
                   <i class="fas fa-users"></i>Users
@@ -47,6 +48,12 @@
               </li>
 
               <% else %>
+              <li class="nav-item">
+                <%= link_to '/',class:"nav-link text-light" do %>
+                  <i class="fas fa-home"></i>Home
+                <% end %>
+              </li>
+
               <li class="nav-item">
                 <%=link_to about_path,class:"nav-link text-light" do %>
                   <i class="fas fa-link"></i>About
@@ -70,6 +77,10 @@
         </div>
       </nav>
     </header>
+
+    <% flash.each do |message_type, message| %>
+     <%= content_tag :div, message, class: message_type %>
+    <% end %>
 
     <main>
     <%= yield %>
