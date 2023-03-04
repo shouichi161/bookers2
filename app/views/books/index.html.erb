@@ -1,3 +1,14 @@
+<div class="p-3 ml-5">
+  <% if @book.errors.any? %>
+    <h2><%=@book.errors.count %> error prohibited this obj from being saved</h2>
+    <% @book.errors.full_messages.each do |message| %>
+    <ul>
+      <li><%= message %></li>
+    </ul>
+    <% end %>
+  <% end %>
+</div>
+
 <div class="container">
   <div class="row">
     <%=render"book",book:@book %>
